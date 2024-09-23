@@ -82,12 +82,11 @@ function App() {
             />
           }
         />
-        <Route
-          path="/businesses"
-          element={<Businesses businesses={businesses} />}
-        />
+        <Route path="/businesses" element={<Businesses businesses={businesses} />} />
+        <Route path="/businesses/:id" element={<BusinessDetails businesses={businesses} />} /> {/* Details route */}
         <Route path="/users" element={<Users users={users} />} />
-        {!!auth.id && <Route path="/createReview" element={<CreateReview />} />}
+        {auth.id && <Route path="/createReview" element={<CreateReview />} />}
+        {auth.id && <Route path="/createBusiness" element={<CreateBusiness onCreate={addBusiness} />} />} {/* Business route */}
       </Routes>
     </>
   );
