@@ -1,9 +1,14 @@
+// src/App.jsx
+// Manages routing
+
 import { useState, useEffect } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import Users from "./pages/Users";
 import Businesses from "./pages/Businesses";
 import CreateReview from "./pages/CreateReview";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   const [auth, setAuth] = useState({});
@@ -65,28 +70,17 @@ function App() {
         {auth.id ? (
           <Link to="/createReview">Create Review</Link>
         ) : (
-          <Link to="/">Register/Login</Link>
+          <Link to="/login">Login</Link>
         )}
       </nav>
       {auth.id && <button onClick={logout}>Logout {auth.username}</button>}
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              authAction={authAction}
-              auth={auth}
-              businesses={businesses}
-              users={users}
-              reviews={reviews}
-            />
-          }
-        />
+        <Route path="/" element={<Home auth={auth} businesses={businesses} users={users} reviews={reviews} />} />
         <Route path="/businesses" element={<Businesses businesses={businesses} />} />
-        <Route path="/businesses/:id" element={<BusinessDetails businesses={businesses} />} /> {/* Details route */}
         <Route path="/users" element={<Users users={users} />} />
+        <Route path="/login" element={<Login authAction={authAction} />} />
+        <Route path="/register" element={<Register authAction={authAction} />} />
         {auth.id && <Route path="/createReview" element={<CreateReview />} />}
-        {auth.id && <Route path="/createBusiness" element={<CreateBusiness onCreate={addBusiness} />} />} {/* Business route */}
       </Routes>
     </>
   );

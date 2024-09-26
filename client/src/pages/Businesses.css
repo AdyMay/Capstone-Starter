@@ -1,0 +1,45 @@
+/* src/pages/businesses.css */
+
+.business-list {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: center; /* Center items horizontally */
+    margin: 20px; /* Margin around the list */
+  }
+  
+  .business-item {
+    border: 1px solid #dee2e6; /* Light border around each business item */
+    border-radius: 5px; /* Rounded corners */
+    margin: 10px; /* Space between items */
+    padding: 15px; /* Padding inside each item */
+    background-color: #ffffff; /* White background for items */
+    width: 250px; /* Fixed width for items */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition */
+  }
+  
+  .business-item:hover {
+    transform: scale(1.05); /* Slightly enlarge item on hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+  }
+  
+  .business-item h3 {
+    margin-bottom: 10px; /* Space below heading */
+    color: #007bff; /* Primary color for headings */
+  }
+  
+  .business-item p {
+    font-size: 14px; /* Slightly smaller font for description */
+    color: #555; /* Dark gray for description text */
+  }
+  
+  .business-item a {
+    text-decoration: none; /* Remove underline from links */
+    color: #007bff; /* Primary link color */
+    font-weight: bold; /* Make link text bold */
+  }
+  
+  .business-item a:hover {
+    text-decoration: underline; /* Underline on hover for better visibility */
+  }
+  

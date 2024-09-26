@@ -1,0 +1,78 @@
+/* src/styles.css */
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body Styles */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light gray background */
+    color: #333; /* Dark gray text */
+    line-height: 1.6; /* Improved readability */
+  }
+  
+  /* Typography */
+  h1, h2, h3 {
+    color: #007bff; /* Primary color for headings */
+  }
+  
+  p {
+    font-size: 16px; /* Base font size */
+    margin-bottom: 10px; /* Space below paragraphs */
+  }
+  
+  /* Button Styles */
+  button {
+    font-size: 16px; /* Base font size for buttons */
+    border-radius: 5px; /* Rounded corners for buttons */
+    border: none; /* No border */
+    padding: 10px 15px; /* Padding for buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+  }
+  
+  button.primary {
+    background-color: #007bff; /* Primary button color */
+    color: white; /* Text color */
+  }
+  
+  button.primary:hover {
+    background-color: #0056b3; /* Darker on hover */
+  }
+  
+  /* Navigation Styles */
+  nav {
+    background-color: #ffffff; /* White background for navigation */
+    padding: 10px 20px;
+    border-bottom: 2px solid #dee2e6; /* Light border */
+    display: flex; /* Flexbox for alignment */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+  }
+  
+  nav a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #007bff; /* Link color */
+    transition: color 0.3s ease; /* Smooth transition */
+  }
+  
+  nav a:hover {
+    color: #0056b3; /* Darker blue on hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column; /* Stack nav items vertically */
+    }
+  
+    .business-item {
+      width: 100%; /* Full width on smaller screens */
+    }
+  }
+  

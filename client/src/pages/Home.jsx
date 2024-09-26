@@ -1,23 +1,25 @@
-import AuthForm from "../components/AuthForm/AuthForm";
+// src/pages/Home.jsx
+// Summary of businesses, users, and reviews
 
-const Home = ({ auth, authAction, logout, businesses, users, reviews }) => {
+import React from 'react';
+import './home.css'; 
+
+const Home = ({ auth, businesses, users, reviews }) => {
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="home-container">
+      <h1>Welcome to Acme Business Reviews</h1>
       <p>
-        Display some interesting information about our {businesses.length}{" "}
-        Businesses
+        We currently have {businesses.length} businesses available.
         <br />
-        Display some interesting information about our {users.length} Users
+        Join our community of {users.length} users.
         <br />
-        Display some interesting information about our {reviews.length} Reviews
+        Explore {reviews.length} reviews from our users.
       </p>
-      {!auth.id ? (
-        <>
-          <AuthForm authAction={authAction} mode="login" />
-          <AuthForm authAction={authAction} mode="register" />
-        </>
-      ) : null}
+      {auth.id ? (
+        <p className="welcome-message">Hello, {auth.username}! Enjoy browsing.</p>
+      ) : (
+        <p className="info">Please log in to leave a review or create a business.</p>
+      )}
     </div>
   );
 };

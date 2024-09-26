@@ -1,22 +1,117 @@
-body {
-  font-family: verdana;
-}
-form {
-  display: flex;
-  flex-direction: column;
+/* src/index.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-form > * {
-  margin: 0.5rem;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4; /* Light gray background */
+  color: #333; /* Dark gray text */
+  line-height: 1.6; /* Improved readability */
+}
+
+h1, h2, h3 {
+  color: #007bff; /* Primary color for headings */
 }
 
 nav {
-  display: flex;
-  justify-content: space-around;
+  background-color: #ffffff; /* White background for navigation */
+  padding: 10px 20px;
+  border-bottom: 2px solid #dee2e6; /* Light border */
+  display: flex; /* Flexbox for alignment */
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Center items vertically */
 }
 
-.error {
-  background-color: tomato;
-  padding: 0.5rem;
-  color: cornSilk;
+nav a {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #007bff; /* Link color */
+  transition: color 0.3s ease; 
+}
+
+nav a:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+nav button {
+  margin-left: 10px;
+  background-color: #dc3545; /* Bootstrap danger color for logout */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+nav button:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
+
+.home-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.business-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center items in the list */
+  margin: 20px; /* Margin around the list */
+}
+
+.business-item {
+  border: 1px solid #dee2e6; /* Border around each business item */
+  border-radius: 5px; /* Rounded corners */
+  margin: 10px; /* Space between items */
+  padding: 15px; /* Padding inside each item */
+  background-color: #ffffff; /* White background for items */
+  width: 250px; /* Fixed width for items */
+  transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+}
+
+.business-item:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow effect on hover */
+}
+
+.business-details {
+  padding: 20px;
+  background-color: #ffffff; /* White background for details */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+form {
+  display: flex;
+  flex-direction: column; /* Stack form elements vertically */
+  max-width: 400px; /* Limit form width */
+  margin: auto; /* Center form */
+  padding: 20px;
+  background-color: #ffffff; /* White background */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+form input, form textarea {
+  margin-bottom: 10px; /* Space between inputs */
+  padding: 10px;
+  border: 1px solid #ced4da; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+}
+
+form button {
+  padding: 10px;
+  background-color: #007bff; /* Primary button color */
+  color: white;
+  border: none;
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+form button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }
