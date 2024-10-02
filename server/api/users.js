@@ -1,13 +1,14 @@
 const express = require("express");
+const { fetchUsers } = require("../db");
 const router = express.Router();
 
-const { fetchUsers } = require("../db");
-
+// GET /users - Fetch all users
 router.get("/", async (req, res, next) => {
   try {
-    res.send(await fetchUsers());
-  } catch (ex) {
-    next(ex);
+    const users = await fetchUsers();
+    res.json(users);
+  } catch (error) {
+    next(error);
   }
 });
 

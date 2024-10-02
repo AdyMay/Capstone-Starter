@@ -1,0 +1,56 @@
+.single-business-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .business-header {
+    text-align: center;
+  }
+  
+  .business-header h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .business-header img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .business-description {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+  
+  .business-reviews {
+    margin-top: 40px;
+  }
+  
+  .review-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .review-item h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .review-item p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 8px;
+  }

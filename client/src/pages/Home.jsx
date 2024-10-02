@@ -2,24 +2,25 @@
 // Summary of businesses, users, and reviews
 
 import React from 'react';
-import './home.css'; 
 
-const Home = ({ auth, businesses, users, reviews }) => {
+const Home = ({ auth, authAction, logout, businesses = [], users = [], reviews = [] }) => {
+  const businessCount = businesses.length;
+  const userCount = users.length;
+  const reviewCount = reviews.length;
+
   return (
-    <div className="home-container">
-      <h1>Welcome to Acme Business Reviews</h1>
+    <div>
+      <h1>Home</h1>
       <p>
-        We currently have {businesses.length} businesses available.
+        Display some interesting information about our {businessCount}{" "}
+        {businessCount === 1 ? "Business" : "Businesses"}
         <br />
-        Join our community of {users.length} users.
+        Display some interesting information about our {userCount}{" "}
+        {userCount === 1 ? "User" : "Users"}
         <br />
-        Explore {reviews.length} reviews from our users.
+        Display some interesting information about our {reviewCount}{" "}
+        {reviewCount === 1 ? "Review" : "Reviews"}
       </p>
-      {auth.id ? (
-        <p className="welcome-message">Hello, {auth.username}! Enjoy browsing.</p>
-      ) : (
-        <p className="info">Please log in to leave a review or create a business.</p>
-      )}
     </div>
   );
 };

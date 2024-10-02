@@ -1,18 +1,23 @@
 // src/pages/Users.jsx
 // Displays a list of users
 
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Users = ({ users }) => {
+const Users = ({ users, token }) => {
   return (
-    <div>
-      <h2>Users List</h2>
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>{user.username}</li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {users.length > 0 ? (
+        users.map(({ id, username }) => (
+          <div key={id}>
+            <p>{username}</p>
+            <Link to={`/users/${id}`}>See {username}'s reviews</Link>
+          </div>
+        ))
+      ) : (
+        <p> No users available. </p>
+      )}
+    </>
   );
 };
 

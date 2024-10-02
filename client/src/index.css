@@ -1,117 +1,227 @@
-/* src/index.css */
-
+/* Default Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+/* Layout Container */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4; /* Light gray background */
-  color: #333; /* Dark gray text */
-  line-height: 1.6; /* Improved readability */
-}
-
-h1, h2, h3 {
-  color: #007bff; /* Primary color for headings */
-}
-
-nav {
-  background-color: #ffffff; /* White background for navigation */
-  padding: 10px 20px;
-  border-bottom: 2px solid #dee2e6; /* Light border */
-  display: flex; /* Flexbox for alignment */
-  justify-content: space-between; /* Space between items */
-  align-items: center; /* Center items vertically */
-}
-
-nav a {
-  margin-right: 15px;
-  text-decoration: none;
-  color: #007bff; /* Link color */
-  transition: color 0.3s ease; 
-}
-
-nav a:hover {
-  color: #0056b3; /* Darker blue on hover */
-}
-
-nav button {
-  margin-left: 10px;
-  background-color: #dc3545; /* Bootstrap danger color for logout */
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease; /* Smooth transition */
-}
-
-nav button:hover {
-  background-color: #c82333; /* Darker red on hover */
-}
-
-.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   padding: 20px;
+  min-height: 100vh;
+}
+
+/* Header Styling */
+header {
+  width: 100%;
+  background-color: #007BFF;
+  color: white;
+  padding: 20px 0;
   text-align: center;
 }
 
-.business-list {
+header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+nav {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* Center items in the list */
-  margin: 20px; /* Margin around the list */
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
 }
 
-.business-item {
-  border: 1px solid #dee2e6; /* Border around each business item */
-  border-radius: 5px; /* Rounded corners */
-  margin: 10px; /* Space between items */
-  padding: 15px; /* Padding inside each item */
-  background-color: #ffffff; /* White background for items */
-  width: 250px; /* Fixed width for items */
-  transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 15px;
+  transition: background-color 0.3s;
 }
 
-.business-item:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Shadow effect on hover */
+nav a:hover {
+  background-color: #0056b3;
+  border-radius: 5px;
 }
 
-.business-details {
-  padding: 20px;
-  background-color: #ffffff; /* White background for details */
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
-}
-
-form {
-  display: flex;
-  flex-direction: column; /* Stack form elements vertically */
-  max-width: 400px; /* Limit form width */
-  margin: auto; /* Center form */
-  padding: 20px;
-  background-color: #ffffff; /* White background */
-  border-radius: 5px; /* Rounded corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow */
-}
-
-form input, form textarea {
-  margin-bottom: 10px; /* Space between inputs */
-  padding: 10px;
-  border: 1px solid #ced4da; /* Light border */
-  border-radius: 4px; /* Rounded corners */
-}
-
-form button {
-  padding: 10px;
-  background-color: #007bff; /* Primary button color */
+/* Button Styling */
+button {
+  background-color: #007BFF;
   color: white;
   border: none;
-  border-radius: 4px; /* Rounded corners */
+  padding: 10px 20px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Smooth transition */
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
 }
 
-form button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Main Content */
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 20px auto;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+/* Form */
+form {
+  max-width: 500px;
+  margin: 20px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+/* Business & User List */
+.business-list,
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.business-item,
+.user-item {
+  width: 45%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: white;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.business-item h3,
+.user-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.business-item img,
+.user-item img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* Links Business/User */
+.business-item a,
+.user-item a {
+  color: #007BFF;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.business-item a:hover,
+.user-item a:hover {
+  text-decoration: underline;
+}
+
+/* Loading & Error messages */
+.loading,
+.error {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 20px 0;
+  color: #666;
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  background-color: #007BFF;
+  color: white;
+  margin-top: auto;
+}
+
+/* Medium screens */
+@media (min-width: 768px) {
+  .business-item,
+  .user-item {
+    width: 48%;
+  }
+
+  form {
+    max-width: 400px;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  .business-item,
+  .user-item {
+    width: 30%;
+  }
+
+  form {
+    max-width: 500px;
+  }
+}
+
+/* Extra-large screens */
+@media (min-width: 1440px) {
+  .business-item,
+  .user-item {
+    width: 23%;
+  }
+
+  form {
+    max-width: 600px;
+  }
 }

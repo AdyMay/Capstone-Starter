@@ -1,35 +1,24 @@
 const express = require("express");
+const { createUser, authenticate } = require("../db");
 const router = express.Router();
 
-const { isLoggedIn } = require("./utils");
-const { authenticate, createUser, findUserWithToken } = require("../db");
-
-router.get("/", (req, res) => {
-  res.send("hello from auth");
-});
-
-router.post("/login", async (req, res, next) => {
-  try {
-    res.send(await authenticate(req.body));
-  } catch (ex) {
-    next(ex);
-  }
-});
-
+// POST /auth/register
 router.post("/register", async (req, res, next) => {
   try {
     const user = await createUser(req.body);
-    res.send(await authenticate(req.body));
-  } catch (ex) {
-    next(ex);
+    res.json(user);
+  } catch (error) {
+    next(error);
   }
 });
 
-router.get("/me", isLoggedIn, (req, res, next) => {
+// POST /auth/login
+router.post("/login", async (req, res, next) => {
   try {
-    res.send(req.user);
-  } catch (ex) {
-    next(ex);
+    const token = await authenticate(req.body);
+    res.json(token);
+  } catch (error) {
+    next(error);
   }
 });
 

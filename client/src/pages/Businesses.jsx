@@ -1,17 +1,23 @@
 // src/pages/Businesses.jsx
 // Lists businesses and links 
 
+import "./businesses.css";
 import React from 'react';
-import './businesses.css'; 
+import { Link } from 'react-router-dom';
 
-const Businesses = ({ businesses }) => {
+const Businesses = ({ businesses, pageType, token }) => {
   return (
-    <div className="business-list">
-      {businesses.map((business) => (
-        <div className="business-item" key={business.id}>
+    <div className={`business-list ${pageType === 'business' ? 'business-page' : ''}`}>
+      {businesses.map(business => (
+        <div key={business.id} className="business-item">
           <h3>{business.name}</h3>
-          <p>{business.description}</p>
-          <a href={`/businesses/${business.id}`}>View Details</a>
+          <img
+            src={business.image || '/default-business.jpg'} // Fallback Image
+            alt={`${business.name} logo`}
+            className={`business-image ${pageType === 'business' ? 'business-page-image' : ''}`}
+          />
+          <br />
+          <Link to={`/business/${business.id}`}> See Details! </Link>
         </div>
       ))}
     </div>

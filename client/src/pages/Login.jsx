@@ -1,43 +1,57 @@
 // src/pages/Login.jsx
 // Form for user login
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Login.css"; // Import the CSS
 
-const Login = ({ authAction }) => {
-  const [credentials, setCredentials] = useState({ username: '', password: '' });
+const Login = ({ auth, authAction }) => {
+  const [credentials, setCredentials] = useState({ username: "", password: "" });
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
-    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setCredentials({ ...credentials, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await authAction(credentials, 'login');
+    try {
+      await authAction(credentials, "login");
+      setError(null); 
+    } catch (err) {
+      setError("Login failed. Please check your credentials.");
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div className="login-container">
       <h2>Login</h2>
-      <input
-        type="text"
-        name="username"
-        placeholder="Username"
-        value={credentials.username}
-        onChange={handleChange}
-        required
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={credentials.password}
-        onChange={handleChange}
-        required
-      />
-      <button type="submit">Login</button>
-    </form>
+      {error && <p className="error-message">{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          value={credentials.username}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          value={credentials.password}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Login</button>
+      </form>
+      <p>
+        Don't have an account? <Link to="/register">Register here</Link>
+      </p>
+    </div>
   );
 };
 
 export default Login;
-

@@ -5,12 +5,17 @@ const {
   fetchUsers,
   createBusiness,
   fetchBusiness,
+  createReview,
+  fetchReview,
 } = require("./index.js");
 
+// Create necessary tables for users, businesses, and reviews
 const createTables = async () => {
   const SQLuser = `
+    DROP TABLE IF EXISTS reviews;
+    DROP TABLE IF EXISTS business;
     DROP TABLE IF EXISTS users;
-    CREATE TABLE users(
+    CREATE TABLE users (
       id UUID PRIMARY KEY,
       username VARCHAR(20) UNIQUE NOT NULL,
       password VARCHAR(255) NOT NULL
@@ -19,8 +24,7 @@ const createTables = async () => {
   await client.query(SQLuser);
 
   const SQLbusiness = `
-    DROP TABLE IF EXISTS business;
-    CREATE TABLE business(
+    CREATE TABLE business (
       id SERIAL PRIMARY KEY,
       name VARCHAR(255) NOT NULL,
       image VARCHAR(255) DEFAULT 'https://plus.unsplash.com/premium_vector-1710425435116-13abfd442d48?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -28,6 +32,17 @@ const createTables = async () => {
     );
   `;
   await client.query(SQLbusiness);
+
+  const SQLreviews = `
+    CREATE TABLE reviews (
+      id SERIAL PRIMARY KEY,
+      userid UUID REFERENCES users(id) ON DELETE CASCADE,
+      businessid INT REFERENCES business(id) ON DELETE CASCADE,
+      text VARCHAR(1023),
+      rating INT NOT NULL CHECK (rating >= 1 AND rating <= 5)
+    );
+  `;
+  await client.query(SQLreviews);
 };
 
 const businesses = [
@@ -66,32 +81,44 @@ const insertBusinesses = async () => {
       await createBusiness(business);
     }
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 
 const init = async () => {
   await client.connect();
-  console.log("connected to database");
+  console.log("Connected to the database");
 
-  await createTables();
-  console.log("tables created");
+  try {
+    await client.query("BEGIN");
 
-  const [moe, lucy, ethyl, curly] = await Promise.all([
-    createUser({ username: "moe", password: "m_pw" }),
-    createUser({ username: "lucy", password: "l_pw" }),
-    createUser({ username: "ethyl", password: "e_pw" }),
-    createUser({ username: "curly", password: "c_pw" }),
-  ]);
+    // Create Tables
+    await createTables();
+    console.log("Tables created");
 
-  await insertBusinesses();
-  console.log("businesses created");
+    // Create Users
+    const [moe, lucy, ethyl, curly] = await Promise.all([
+      createUser({ username: "moe", password: "m_pw" }),
+      createUser({ username: "lucy", password: "l_pw" }),
+      createUser({ username: "ethyl", password: "e_pw" }),
+      createUser({ username: "curly", password: "c_pw" }),
+    ]);
+    console.log("Users created");
 
-  console.log(await fetchUsers());
+    await insertBusinesses();
+    console.log("Businesses inserted");
 
-  console.log(await fetchBusiness());
+    console.log(await fetchUsers());
+    console.log(await fetchBusiness());
+    console.log(await fetchReview());
 
-  client.end();
+    await client.query("COMMIT");
+  } catch (error) {
+    await client.query("ROLLBACK");
+    console.error("Error during initialization", error);
+  } finally {
+    client.end();
+  }
 };
 
 init();

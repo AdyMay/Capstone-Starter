@@ -1,19 +1,14 @@
 // src/pages/Register.jsx
 // Form for user registration
 
-import React, { useState } from 'react';
+import React from "react";
+import AuthForm from "../components/AuthForm/AuthForm";
 
-const Register = ({ authAction }) => {
-  const [credentials, setCredentials] = useState({ username: '', password: '' });
+const Register = ({ auth, authAction }) => {
+  if (auth.id) return null;
 
-  const handleChange = (e) => {
-    setCredentials({ ...credentials, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    await authAction(credentials, 'register');
-  };
+  return <AuthForm authAction={authAction} mode="register" />;
+};
 
   return (
     <form onSubmit={handleSubmit}>
@@ -37,7 +32,6 @@ const Register = ({ authAction }) => {
       <button type="submit">Register</button>
     </form>
   );
-};
 
 export default Register;
 
