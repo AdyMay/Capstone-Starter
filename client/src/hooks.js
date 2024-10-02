@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-// Hook for fetching data (e.g., Users, Businesses)
 export const useFetch = (url, initialData = []) => {
   const [data, setData] = useState(initialData);
   const [error, setError] = useState(null);
@@ -9,7 +8,8 @@ export const useFetch = (url, initialData = []) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(url);
+        const response = await fetch(`http://localhost:3000${url}`);
+        console.log("response", response);
         if (!response.ok) throw new Error(`Failed to fetch ${url}`);
         const result = await response.json();
         setData(result);
@@ -26,7 +26,6 @@ export const useFetch = (url, initialData = []) => {
   return { data, error, loading };
 };
 
-// Hook for handling authentication
 export const useAuth = () => {
   const [auth, setAuth] = useState({});
   const [token, setToken] = useState(null);

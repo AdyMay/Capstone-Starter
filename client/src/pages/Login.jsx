@@ -3,7 +3,7 @@
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Login.css"; // Import the CSS
+import "./Login.css"; 
 
 const Login = ({ auth, authAction }) => {
   const [credentials, setCredentials] = useState({ username: "", password: "" });

@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const port = process.env.PORT || 3000;
-const { client } = require("./db");
-client.connect();
 
 app.use(express.json());
+app.use(cors());
 
 app.use("/api", require("./api"));
 

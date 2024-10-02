@@ -1,4 +1,4 @@
-const { client } = require("./client");
+const client = require("./client");
 
 const {
   createUser,
@@ -86,8 +86,10 @@ const insertBusinesses = async () => {
 };
 
 const init = async () => {
-  await client.connect();
-  console.log("Connected to the database");
+  console.log("CLIENT", client);
+  // await client.connect();
+  // console.log("Connected to the database");
+  console.log("Initializing");
 
   try {
     await client.query("BEGIN");

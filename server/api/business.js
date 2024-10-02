@@ -1,37 +1,27 @@
 const express = require("express");
+const { fetchBusiness, createBusiness } = require("../db");
 const router = express.Router();
 
-const { fetchBusiness, fetchSingleBusiness } = require("../db");
-
-// GET /api/business - All Businesses
+// GET /business
 router.get("/", async (req, res, next) => {
   try {
     const businesses = await fetchBusiness();
     res.json(businesses);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
 
-// GET /api/business/:id - Single Business
-router.get("/:id", async (req, res, next) => {
+// POST /business/create
+router.post("/create", async (req, res, next) => {
   try {
-    const id = Number(req.params.id);
-
-    if (isNaN(id)) {
-      return res.status(400).json({ error: "Invalid business ID" });
-    }
-
-    const business = await fetchSingleBusiness(id);
-
-    if (!business) {
-      return res.status(404).json({ error: "Business not found" });
-    }
-
+    const business = await createBusiness(req.body);
     res.json(business);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 });
 
 module.exports = router;
+
+// TODO

@@ -1,7 +1,7 @@
 // src/pages/Businesses.jsx
 // Lists businesses and links 
 
-import "./businesses.css";
+import "./Businesses.css";
 import React from 'react';
 import { Link } from 'react-router-dom';
 
