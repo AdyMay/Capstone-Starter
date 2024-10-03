@@ -17,7 +17,7 @@ const Businesses = ({ businesses, pageType, token }) => {
             className={`business-image ${pageType === 'business' ? 'business-page-image' : ''}`}
           />
           <br />
-          <Link to={`/business/${business.id}`}> See Details! </Link>
+          <Link to={`/business/${business.id}`}> Details </Link>
         </div>
       ))}
     </div>
