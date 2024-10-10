@@ -16,6 +16,7 @@ async function createUser({ username, password }) {
 }
 
 async function authenticate({ username, password }) {
+  console.log("Authinicating");
   const { rows } = await client.query(
     `SELECT id, username, password FROM users WHERE username = $1`,
     [username]

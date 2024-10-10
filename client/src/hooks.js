@@ -56,7 +56,7 @@ export const useAuth = () => {
 
   const authAction = async (credentials, mode) => {
     try {
-      const response = await fetch(`/api/auth/${mode}`, {
+      const response = await fetch(`http://localhost:3000/api/auth/${mode}`, {
         method: "POST",
         body: JSON.stringify(credentials),
         headers: { "Content-Type": "application/json" },

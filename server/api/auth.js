@@ -16,6 +16,7 @@ router.post("/register", async (req, res, next) => {
 router.post("/login", async (req, res, next) => {
   try {
     const token = await authenticate(req.body);
+    console.log(token);
     res.json(token);
   } catch (error) {
     next(error);
