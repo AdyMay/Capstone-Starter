@@ -47,31 +47,32 @@ const createTables = async () => {
 
 const businesses = [
   {
-    name: "Acme Pizza",
+    name: "Acme Pizza Plaza",
     image:
-      "https://upload.wikimedia.org/wikipedia/commons/9/91/Pizza-3007395.jpg",
+      "https://www.freepik.com/free-ai-image/baked-firewood-pizza-cooked-rustic-oven-generated-by-ai_41193741.htm#fromView=search&page=1&position=0&uuid=720ebc87-de8a-4052-b84e-58b48550457e",
     description:
-      "New York style pizza & Other Italian classics are provided at this cozy pizzeria.",
+      "Gourmet wood-fired pizzas made from the freshest ingredients with unique toppings in a rustic, relaxed environment.",
   },
   {
-    name: "Moe's Typewriter Repair",
+    name: "Moe's Typewriter Repair Shop",
     image:
-      "https://cdn11.bigcommerce.com/s-r2o17ymkxr/images/stencil/832x750/uploaded_images/052819-making-a-comeback-11-shocking-facts-on-the-history-of-typewritershistoryoftypewriters400x.jpg?t=1567084857",
-    description: "Specializing in typewriter sales, repairs, and maintenance.",
+      "https://www.freepik.com/premium-ai-image/vintage-typewriter-red-background_260658520.htm#from_view=detail_alsolike",
+    description:
+      "Vintage typewriter restoration specialists who bring antique machines back to life for collectors and enthusiasts.",
   },
   {
-    name: "Lucy's Candy Shop",
+    name: "Lucy's Candy Store",
     image:
-      "https://media.architecturaldigest.com/photos/55e7658d302ba71f3016531d/4:3/w_800,h_600,c_limit/dam-images-architecture-2015-02-candy-shops-beautiful-candy-shops-01-dylans-candy-bar.jpg",
+      "https://www.freepik.com/free-ai-image/fairy-tale-world-with-delicious-candy_67388443.htm?sign-up=google#from_view=detail_alsolike",
     description:
-      "Colorful retail chain offering classic & oversized candy, plus apparel, accessories & novelty gifts.",
+      "A family-owned sweet shop offering handmade chocolates, candy, and retro treats for all ages, located in the heart of downtown.",
   },
   {
     name: "Mary's Flower Shop",
     image:
-      "https://mspmag.com/downloads/61859/download/image002.jpg?cb=de465bc50a9e5635ec2a607d7d4f453c&w=1280",
+      "https://www.freepik.com/premium-ai-image/pollen-flower-plant-flower-flower-pink-plant-petals-flower-petals-day-foreground-nature-fresh_345882812.htm#fromView=search&page=1&position=27&uuid=ec5fc911-0c45-4ba9-9eca-b15528fa2f2f",
     description:
-      "Independently owned flower shop with custom & premade arrangements using seasonal & exotic blooms.",
+      "A boutique florist specializing in custom arrangements for weddings, events, and everyday occasions, using seasonal blooms and unique floral designs.",
   },
 ];
 

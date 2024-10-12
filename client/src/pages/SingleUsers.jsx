@@ -14,7 +14,7 @@ function SingleUsers({ token }) {
 
     const getSingleUser = async () => {
         try {
-            const response = await fetch(`/api/users/${id}`, {
+            const response = await fetch(`../..//api/users/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

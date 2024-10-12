@@ -1,27 +1,27 @@
 const express = require("express");
-const { createReview, fetchReview } = require("../db");
 const router = express.Router();
 
-// POST /reviews/create
-router.post("/create", async (req, res, next) => {
-  try {
-    const review = await createReview(req.body);
-    res.json(review);
-  } catch (error) {
-    next(error);
-  }
-});
+const { fetchReview, createReview } = require("../db");
+const { isLoggedIn } = require("./utils");
 
-// GET /reviews
+// All Reviews
 router.get("/", async (req, res, next) => {
   try {
     const reviews = await fetchReview();
-    res.json(reviews);
-  } catch (error) {
-    next(error);
+    res.send(reviews);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+router.post("/create", isLoggedIn, async (req, res, next) => {
+  try {
+    // Use req.user.id (from isLoggedIn middleware) and review data from req.body
+    const review = await createReview(req.user.id, req.body);
+    res.send(review);
+  } catch (ex) {
+    next(ex);
   }
 });
 
 module.exports = router;
-
-// TODO

@@ -1,0 +1,44 @@
+
+.rating {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .stars {
+    display: flex;
+    gap: 4px; 
+    cursor: pointer;
+  }
+  
+  .filled-star {
+    color: gold;
+    font-size: 24px;
+    transition: color 0.3s ease;
+  }
+  
+  .empty-star {
+    color: lightgray;
+    font-size: 24px; 
+  }
+  
+  .loading-message,
+  .error-message {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .loading-message {
+    color: #555; 
+  }
+  
+  .error-message {
+    color: red; 
+    font-weight: bold;
+  }
+  
+  .stars:hover .filled-star,
+  .stars:hover .empty-star {
+    transition: color 0.2s ease; 
+  }

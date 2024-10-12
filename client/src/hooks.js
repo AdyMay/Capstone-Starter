@@ -39,7 +39,7 @@ export const useAuth = () => {
 
   const attemptLoginWithToken = async (token) => {
     try {
-      const response = await fetch("/api/auth/me", {
+      const response = await fetch("../api/auth", {
         headers: { authorization: token },
       });
       const json = await response.json();
@@ -70,7 +70,7 @@ export const useAuth = () => {
         throw new Error(json.message || "Authentication failed");
       }
     } catch (err) {
-      console.error(err);
+      console.log("Error");
     }
   };
 
