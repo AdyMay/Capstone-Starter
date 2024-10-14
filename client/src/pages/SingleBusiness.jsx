@@ -22,7 +22,7 @@ function SingleBusiness({ pageType }) {
         const fetchBusiness = async () => {
             try {
                 const token = window.localStorage.getItem("token");
-                const response = await fetch(`/api/business/${id}`, {
+                const response = await fetch(`http://localhost:3000/api/business/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`, // check token
                     },

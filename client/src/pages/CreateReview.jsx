@@ -1,5 +1,4 @@
 // src/pages/CreateReview.jsx
-// Allows users to submit reviews
 
 import React, { useState } from "react";
 import "./CreateReview.css";
