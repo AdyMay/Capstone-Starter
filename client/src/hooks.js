@@ -39,7 +39,7 @@ export const useAuth = () => {
 
   const attemptLoginWithToken = async (token) => {
     try {
-      const response = await fetch("../api/auth", {
+      const response = await fetch("http://localhost:3000/api/auth", {
         headers: { authorization: token },
       });
       const json = await response.json();

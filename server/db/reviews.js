@@ -1,4 +1,4 @@
-const { client } = require("./client");
+const client = require("./client");
 
 const createReview = async (userid, { businessid, text, rating }) => {
   try {

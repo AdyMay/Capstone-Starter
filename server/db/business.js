@@ -1,4 +1,4 @@
-const { client } = require("./client");
+const client = require("./client");
 
 // CREATE a new business
 const createBusiness = async ({ name, image, description }) => {
@@ -10,8 +10,7 @@ const createBusiness = async ({ name, image, description }) => {
     `;
     const response = await client.query(SQL, [
       name,
-      image ||
-        "https://plus.unsplash.com/premium_vector-1710425435116-13abfd442d48?q=80&w=1800&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      image || "", // TODO ADD IMAGE
       description,
     ]);
     return response.rows[0];
@@ -25,9 +24,10 @@ const createBusiness = async ({ name, image, description }) => {
 const fetchBusiness = async () => {
   try {
     const SQL = `
-      SELECT id, name, description, image 
+      SELECT * 
       FROM business;
     `;
+    console.log(SQL);
     const response = await client.query(SQL);
     return response.rows;
   } catch (err) {

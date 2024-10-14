@@ -16,8 +16,10 @@ const Login = ({ auth, authAction }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("LOGIN", credentials);
     try {
       await authAction(credentials, "login");
+      
       setError(null); 
     } catch (err) {
       setError("Login failed. Please check your credentials.");
