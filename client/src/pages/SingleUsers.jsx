@@ -9,12 +9,12 @@ function SingleUsers({ token }) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        getSingleUser();
+     getSingleUser();
     }, [id]); 
 
     const getSingleUser = async () => {
         try {
-            const response = await fetch(`../..//api/users/${id}`, {
+            const response = await fetch(`http://localhost:3000/api/users/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -23,7 +23,8 @@ function SingleUsers({ token }) {
                 throw new Error("Failed to fetch user.");
             }
             const json = await response.json();
-            setUser(json[0]);
+            console.log(json);
+            setUser(json);
         } catch (err) {
             setError(err.message);
         }
