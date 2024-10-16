@@ -48,29 +48,25 @@ const createTables = async () => {
 const businesses = [
   {
     name: "Acme Pizza Plaza",
-    image:
-      "https://www.freepik.com/free-ai-image/baked-firewood-pizza-cooked-rustic-oven-generated-by-ai_41193741.htm#fromView=search&page=1&position=0&uuid=720ebc87-de8a-4052-b84e-58b48550457e",
+    image: "",
     description:
       "Gourmet wood-fired pizzas made from the freshest ingredients with unique toppings in a rustic, relaxed environment.",
   },
   {
     name: "Moe's Typewriter Repair Shop",
-    image:
-      "https://www.freepik.com/premium-ai-image/vintage-typewriter-red-background_260658520.htm#from_view=detail_alsolike",
+    image: "",
     description:
       "Vintage typewriter restoration specialists who bring antique machines back to life for collectors and enthusiasts.",
   },
   {
     name: "Lucy's Candy Store",
-    image:
-      "https://www.freepik.com/free-ai-image/fairy-tale-world-with-delicious-candy_67388443.htm?sign-up=google#from_view=detail_alsolike",
+    image: "",
     description:
       "A family-owned sweet shop offering handmade chocolates, candy, and retro treats for all ages, located in the heart of downtown.",
   },
   {
     name: "Mary's Flower Shop",
-    image:
-      "https://www.freepik.com/premium-ai-image/pollen-flower-plant-flower-flower-pink-plant-petals-flower-petals-day-foreground-nature-fresh_345882812.htm#fromView=search&page=1&position=27&uuid=ec5fc911-0c45-4ba9-9eca-b15528fa2f2f",
+    image: "",
     description:
       "A boutique florist specializing in custom arrangements for weddings, events, and everyday occasions, using seasonal blooms and unique floral designs.",
   },

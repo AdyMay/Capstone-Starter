@@ -8,11 +8,7 @@ const createBusiness = async ({ name, image, description }) => {
       VALUES ($1, $2, $3) 
       RETURNING *;
     `;
-    const response = await client.query(SQL, [
-      name,
-      image || "", // TODO ADD IMAGE
-      description,
-    ]);
+    const response = await client.query(SQL, [name, image || "", description]);
     return response.rows[0];
   } catch (err) {
     console.error("Error creating business:", err);
