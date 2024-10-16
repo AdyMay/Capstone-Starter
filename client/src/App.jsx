@@ -7,7 +7,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import SingleBusiness from "./pages/SingleBusiness";
 import SingleUsers from "./pages/SingleUsers";
-// import CreateReview from "./pages/CreateReview";
+import BusinessRating from "./pages/BusinessesRating";
 
 import { useFetch, useAuth } from './hooks'; 
 

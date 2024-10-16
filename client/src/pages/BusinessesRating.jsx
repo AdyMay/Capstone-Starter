@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Businessess from '../../pages/Businesses';
+import Businessess from './Businesses';
 
 const Rating = ({ businessid }) => {
   const [rating, setRating] = useState(null); 
@@ -8,9 +8,9 @@ const Rating = ({ businessid }) => {
 
   useEffect(() => {
     if (businessid) {
-      calculateBusinessRating(); // Fetch Business Rating
+      calculateBusinessRating(); 
     }
-  }, [businessid]); // TODO Add Business Id 
+  }, [businessid]); 
 
   // Calculate Average Rating A Business
   const calculateBusinessRating = async () => {
