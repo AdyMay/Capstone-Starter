@@ -16,7 +16,6 @@ router.get("/", async (req, res, next) => {
 
 router.post("/create", isLoggedIn, async (req, res, next) => {
   try {
-    // Use req.user.id (from isLoggedIn middleware) and review data from req.body
     const review = await createReview(req.user.id, req.body);
     res.send(review);
   } catch (ex) {

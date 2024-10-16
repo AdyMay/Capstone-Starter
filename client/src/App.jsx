@@ -24,6 +24,7 @@ function App() {
           <Link to="/">Home</Link>
           <Link to="/businesses">Businesses ({businesses.length})</Link>
           <Link to="/users">Users ({users.length})</Link>
+        
           {auth.id ? (
             <>
               <Link to="/createReview">Create Review</Link>
@@ -65,6 +66,12 @@ function App() {
         {auth.id && (
           <Route
             path="/createReview"
+            element={<CreateReview token={token} businesses={businesses} />}
+          />
+        )}
+        {auth.id && (
+          <Route
+            path="/reviews"
             element={<CreateReview token={token} businesses={businesses} />}
           />
         )}
