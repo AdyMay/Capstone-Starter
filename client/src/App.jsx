@@ -8,6 +8,8 @@ import Register from "./pages/Register";
 import SingleBusiness from "./pages/SingleBusiness";
 import SingleUsers from "./pages/SingleUsers";
 import BusinessRating from "./pages/BusinessesRating";
+import Reviews from "./pages/Reviews";
+// import StarRating from "./src/components/Rating/StarRating";
 
 import { useFetch, useAuth } from './hooks'; 
 
