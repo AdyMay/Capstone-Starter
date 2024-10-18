@@ -33,7 +33,8 @@ function SingleBusiness({ pageType }) {
                 }
 
                 const json = await response.json();
-                setBusiness(json[0]);
+                console.log("json", json);
+                setBusiness(json);
             } catch (err) {
                 setError(err.message);
             } finally {

@@ -1,6 +1,6 @@
 const client = require("./client");
 
-const uuid = require("uuid");
+// const uuid = require("uuid");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const JWT = process.env.JWT || "password";
@@ -13,10 +13,9 @@ const createUser = async ({ username, password }) => {
     throw error;
   }
   const SQL = `
-    INSERT INTO users(id, username, password) VALUES($1, $2, $3) RETURNING *;
+    INSERT INTO users(username, password) VALUES($1, $2) RETURNING *;
   `;
   const response = await client.query(SQL, [
-    uuid.v4(),
     username,
     await bcrypt.hash(password, 5),
   ]);

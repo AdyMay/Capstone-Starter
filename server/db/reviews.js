@@ -1,6 +1,6 @@
 const client = require("./client");
 
-const createReview = async (userid, { businessid, text, rating }) => {
+const createReview = async ({ userid, businessid, text, rating }) => {
   try {
     const SQL = `
       INSERT INTO reviews (userid, businessid, text, rating) 

@@ -19,7 +19,7 @@ router.get("/", async (req, res, next) => {
 
 // GET a single business by ID
 router.get("/:id", async (req, res, next) => {
-  const id = Number(req.params.id);
+  const id = req.params.id;
 
   if (isNaN(id)) {
     return res.status(400).send({ error: "Invalid business ID" });

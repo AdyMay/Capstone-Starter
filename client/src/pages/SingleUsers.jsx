@@ -6,6 +6,7 @@ import "./SingleUsers.css";
 function SingleUsers({ token }) {
     const { id } = useParams();
     const [user, setUser] = useState(null);
+    const [reviews, setReviews] = useState(null); 
     const [error, setError] = useState(null);
 
     useEffect(() => {
@@ -22,9 +23,13 @@ function SingleUsers({ token }) {
             if (!response.ok) {
                 throw new Error("Failed to fetch user.");
             }
+            const reviewResponse = await fetch (`http://localhost:3000/api/users/${id}/reviews`)
             const json = await response.json();
+            const jsonReviews = await reviewResponse.json();
             console.log(json);
+            console.log(jsonReviews);
             setUser(json);
+            setReviews(jsonReviews);
         } catch (err) {
             setError(err.message);
         }

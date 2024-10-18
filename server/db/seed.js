@@ -1,4 +1,6 @@
 const client = require("./client");
+const businesses = require("./list/businessList.js");
+const reviews = require("./list/reviewsList.js");
 
 const {
   createUser,
@@ -12,11 +14,12 @@ const {
 // Create necessary tables for users, businesses, and reviews
 const createTables = async () => {
   const SQLuser = `
-    DROP TABLE IF EXISTS reviews;
-    DROP TABLE IF EXISTS business;
-    DROP TABLE IF EXISTS users;
+  DROP TABLE IF EXISTS reviews;
+  DROP TABLE IF EXISTS business;
+  DROP TABLE IF EXISTS users;
+    
     CREATE TABLE users (
-      id UUID PRIMARY KEY,
+      id SERIAL PRIMARY KEY,
       username VARCHAR(20) UNIQUE NOT NULL,
       password VARCHAR(255) NOT NULL
     );
@@ -36,7 +39,7 @@ const createTables = async () => {
   const SQLreviews = `
     CREATE TABLE reviews (
       id SERIAL PRIMARY KEY,
-      userid UUID REFERENCES users(id) ON DELETE CASCADE,
+      userid SERIAL REFERENCES users(id) ON DELETE CASCADE,
       businessid INT REFERENCES business(id) ON DELETE CASCADE,
       text VARCHAR(1023),
       rating INT NOT NULL CHECK (rating >= 1 AND rating <= 5)
@@ -44,33 +47,6 @@ const createTables = async () => {
   `;
   await client.query(SQLreviews);
 };
-
-const businesses = [
-  {
-    name: "Acme Pizza Plaza",
-    image: "",
-    description:
-      "Gourmet wood-fired pizzas made from the freshest ingredients with unique toppings in a rustic, relaxed environment.",
-  },
-  {
-    name: "Moe's Typewriter Repair Shop",
-    image: "",
-    description:
-      "Vintage typewriter restoration specialists who bring antique machines back to life for collectors and enthusiasts.",
-  },
-  {
-    name: "Lucy's Candy Store",
-    image: "",
-    description:
-      "A family-owned sweet shop offering handmade chocolates, candy, and retro treats for all ages, located in the heart of downtown.",
-  },
-  {
-    name: "Mary's Flower Shop",
-    image: "",
-    description:
-      "A boutique florist specializing in custom arrangements for weddings, events, and everyday occasions, using seasonal blooms and unique floral designs.",
-  },
-];
 
 const insertBusinesses = async () => {
   try {
@@ -82,8 +58,18 @@ const insertBusinesses = async () => {
   }
 };
 
+const insertReviews = async () => {
+  try {
+    for (const review of reviews) {
+      await createReview(review);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const init = async () => {
-  console.log("CLIENT", client);
+  // console.log("CLIENT", client);
   // await client.connect();
   // console.log("Connected to the database");
   console.log("Initializing");
@@ -106,6 +92,9 @@ const init = async () => {
 
     await insertBusinesses();
     console.log("Businesses inserted");
+
+    await insertReviews();
+    console.log("Reviews Inserting");
 
     console.log(await fetchUsers());
     console.log(await fetchBusiness());
