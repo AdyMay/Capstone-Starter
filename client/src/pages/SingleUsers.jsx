@@ -37,17 +37,30 @@ function SingleUsers({ token }) {
 
     return (
         <div>
-            {error && <p>{error}</p>}
-            {!user && !error && <p>Loading user data...</p>}
-            {user && (
-                <div>
-                    <h2>{user.username}</h2>
-                    <p>Email: {user.email}</p>
-                    {/* User Details Here */}
-                </div>
-            )}
+          {error && <p>{error}</p>}
+          {!user && !error && <p>Loading user data...</p>}
+          {user && (
+            <div>
+              <h2>{user.username}</h2>
+    
+              {/* User Reviews */}
+              <h3>{user.username}'s Reviews</h3>
+              <div className="reviews-container">
+                {reviews.length > 0 ? (
+                  reviews.map((review, index) => (
+                    <div key={index} className="review-item">
+                      <p className="review-text">{review.text}</p>
+                      <p className="review-rating">Rating: {review.rating}/5</p>
+                    </div>
+                  ))
+                ) : (
+                  <p>No reviews available for this user.</p>
+                )}
+              </div>
+            </div>
+          )}
         </div>
-    );
-}
+      );
+    };
 
 export default SingleUsers;
