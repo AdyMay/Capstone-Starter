@@ -10,7 +10,7 @@ const businesses = [
   },
   {
     id: 2,
-    name: "Moe's Typewriter Repair Shop",
+    name: "Moe's Typewriter Repair",
     image:
       "https://images.pexels.com/photos/163116/typewriter-vintage-old-vintage-typewriter-163116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     description:
@@ -34,4 +34,4 @@ const businesses = [
   },
 ];
 
-export default businesses;
+module.exports = businesses;

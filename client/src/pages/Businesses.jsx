@@ -6,6 +6,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Businesses = ({ businesses, pageType }) => {
+  console.log("business", businesses[0]);
   return (
     <div className={`business-list ${pageType === 'business' ? 'business-page' : ''}`}>
       {businesses.map(business => (
