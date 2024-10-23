@@ -18,7 +18,7 @@ const Login = ({ auth, authAction, logout }) => {
     try {
       await authAction(credentials, "login");
       setError(null); 
-      navigate("/"); // Redirect to the home page after successful login
+      navigate("/businesses"); // Redirect to the businesses page after successful login
     } catch (err) {
       setError("Login failed. Please check your credentials.");
     }
