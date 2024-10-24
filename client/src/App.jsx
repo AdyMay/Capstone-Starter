@@ -10,6 +10,7 @@ import SingleUsers from "./pages/SingleUsers";
 import BusinessRating from "./pages/BusinessesRating";
 import Reviews from "./pages/Reviews";
 
+
 import { useFetch, useAuth } from './hooks'; 
 
 function App() {
@@ -25,8 +26,7 @@ function App() {
           <Link to="/">Home</Link>
           <Link to="/businesses">Businesses ({businesses.length})</Link>
           <Link to="/users">Users ({users.length})</Link>
-        
-          {auth.id ? (
+          {auth.token ? (
             <>
               <Link to="/createReview">Create Review</Link>
               <button onClick={logout}>Logout {auth.username}</button>
@@ -37,11 +37,11 @@ function App() {
         </nav>
       </header>
 
-      {businessError && <p>Error loading businesses: {businessError}</p>}
+      {/* {businessError && <p>Error loading businesses: {businessError}</p>}
       {userError && <p>Error loading users: {userError}</p>}
 
       {businessLoading && <p>Loading businesses...</p>}
-      {userLoading && <p>Loading users...</p>}
+      {userLoading && <p>Loading users...</p>} */}
 
       {/* Application Routes */}
       <Routes>
@@ -64,15 +64,9 @@ function App() {
           path="/users"
           element={<Users users={users} token={token} />}
         />
-        {auth.id && (
+        {auth.token && (
           <Route
             path="/createReview"
-            element={<CreateReview token={token} businesses={businesses} />}
-          />
-        )}
-        {auth.id && (
-          <Route
-            path="/reviews"
             element={<CreateReview token={token} businesses={businesses} />}
           />
         )}

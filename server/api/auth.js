@@ -6,7 +6,11 @@ const { authenticate, createUser, findUserWithToken } = require("../db");
 
 // Testing
 router.get("/", (req, res) => {
-  res.send("hello from auth");
+  try {
+    res.status(200);
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 router.post("/login", async (req, res, next) => {

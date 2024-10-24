@@ -9,7 +9,6 @@ export const useFetch = (url, initialData = []) => {
     const fetchData = async () => {
       try {
         const response = await fetch(`http://localhost:3000${url}`);
-        console.log("response", response);
         if (!response.ok) throw new Error(`Failed to fetch ${url}`);
         const result = await response.json();
         setData(result);
@@ -38,19 +37,28 @@ export const useAuth = () => {
   }, []);
 
   const attemptLoginWithToken = async (token) => {
+    console.log("HERERERRE ERE");
     try {
-      const response = await fetch("http://localhost:3000/api/auth", {
-        headers: { authorization: token },
+      console.log(`token`, token);
+      const response = await fetch("http://localhost:3000/api/auth/me", {
+        headers: { Authorization: `Bearer ${token}` },
       });
+      console.log("response", response); //doesnt get reached
       const json = await response.json();
+      console.log("json attempt", json); //doesnt get reached
       if (response.ok) {
         setAuth(json);
         setToken(token);
       } else {
-        logout();
+        console.log("ERROR 1");
+        //     logout();
+        console.error("something went wrong");
       }
     } catch (err) {
-      logout();
+      // throws and error and removes token from local storage
+      console.log("ERROR 2");
+      //    logout();
+      console.error(err);
     }
   };
 

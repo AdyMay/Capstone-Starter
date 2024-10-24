@@ -18,7 +18,7 @@ const Register = ({ auth, authAction }) => {
     }
   };
 
-  if (auth.id) return null;
+  if (auth.token) return null;
 
   return <AuthForm authAction={handleRegister} mode="register" />; 
 };

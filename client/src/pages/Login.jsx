@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link, useNavigate } from "react-router-dom"; 
 import "./Login.css"; 
 
 const Login = ({ auth, authAction, logout }) => {
   const [credentials, setCredentials] = useState({ username: "", password: "" });
   const [error, setError] = useState(null);
-  const navigate = useNavigate(); // Initialize useNavigate for redirect
+  const navigate = useNavigate(); 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,7 +18,7 @@ const Login = ({ auth, authAction, logout }) => {
     try {
       await authAction(credentials, "login");
       setError(null); 
-      navigate("/businesses"); // Redirect to the businesses page after successful login
+      navigate("/businesses"); // Redirect to businesses 
     } catch (err) {
       setError("Login failed. Please check your credentials.");
     }
@@ -26,7 +26,7 @@ const Login = ({ auth, authAction, logout }) => {
 
   return (
     <div className="login-container">
-      {auth.id ? ( // If the user is logged in, show the logout button
+      {auth.token ? ( // logout button
         <>
           <h2>Welcome, {auth.username}!</h2>
           <button onClick={logout}>Logout</button>

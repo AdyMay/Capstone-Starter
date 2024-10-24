@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import "./CreateReview.css";
 
 
-const CreateReview = ({ businesses, submitReview }) => {
+const CreateReview = ({ businesses }) => {
   const [formData, setFormData] = useState({
     businessId: "",
     text: "",
@@ -29,6 +29,8 @@ const CreateReview = ({ businesses, submitReview }) => {
       setSuccess(null);
     }
   };
+
+  // create a submit reivew funtcion below
 
   return (
     <div className="create-review-container">
