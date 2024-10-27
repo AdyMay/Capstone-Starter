@@ -30,7 +30,7 @@ const CreateReview = ({ businesses }) => {
     }
   };
 
-  // create a submit reivew funtcion below
+  // submit reivew
 
   return (
     <div className="create-review-container">
