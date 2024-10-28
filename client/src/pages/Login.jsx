@@ -28,7 +28,7 @@ const Login = ({ auth, authAction, logout }) => {
     <div className="login-container">
       {auth.token ? ( // logout button
         <>
-          <h2>Welcome, {auth.username}!</h2>
+          <h2>Welcome {auth.username}</h2>
           <button onClick={logout}>Logout</button>
         </>
       ) : (
